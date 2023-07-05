@@ -1,7 +1,6 @@
 package org.edupoll.controller;
 
-import java.util.Base64;
-
+import org.edupoll.service.JWTService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -10,28 +9,39 @@ import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
 @RestController
 @RequestMapping("/api/v1/user")
+@RequiredArgsConstructor
 @Slf4j
 //lombok
 public class FollowController {
 
+	private final JWTService jwtService;
+
 	@GetMapping("/{user}/following")
-	public ResponseEntity<Void> getFollowingList(@PathVariable String user,
-			@RequestHeader(name = "Authenticated-User", required = false) String secret) {
-			//request header에 인증을 받았는지, 받지 않았는지 판별
+	public ResponseEntity<Void> getFlollowingList(@PathVariable String user,
+			@RequestHeader(name = "token", required = false) String token) {
 		
-		
-		if(secret == null) {
+		if (token == null) {
 			return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
 		}
-		String secretUser = new String(Base64.getDecoder().decode(secret));
-		
-		// lombok에 들어있는 log
-		log.info("user=" + user + " / secret = " + secret + " / secretUser =" + secretUser);
+		// 토큰 검증
+		jwtService.verifyToken(token);
 
 		return new ResponseEntity<>(HttpStatus.OK);
+
+//		if(token == null) {
+//			return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
+//		}
+//		String secretUser = new String(Base64.getDecoder().decode(token));
+//		
+//		// lombok에 들어있는 log
+//		log.info("user=" + user + " / secret = " + token + " / secretUser =" + secretUser);
+//
+//		return new ResponseEntity<>(HttpStatus.OK);
 	}
+
 }

@@ -2,7 +2,7 @@ package org.edupoll.model.dto.request;
 
 import java.text.SimpleDateFormat;
 
-import org.edupoll.model.entity.ValidCode;
+import org.edupoll.model.entity.VerificationCode;
 
 import lombok.Data;
 
@@ -14,7 +14,5 @@ public class CertifyRequest {
 	String email;
 	String created;
 	String state;
-
-	
 
 }

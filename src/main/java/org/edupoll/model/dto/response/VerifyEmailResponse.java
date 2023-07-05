@@ -5,10 +5,7 @@ import lombok.Data;
 
 @Data
 @AllArgsConstructor
-public class ErrorResponse {
-
+public class VerifyEmailResponse {
 	private int code;
-	private String cause;
-	private long timeStamp;
-	
+	private String message;
 }

@@ -1,14 +1,14 @@
 package org.edupoll.model.dto.response;
 
+import org.edupoll.model.dto.UserWrapper;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 
 @Data
 @AllArgsConstructor
-public class ErrorResponse {
+public class LogonUserInfoResponse {
 
-	private int code;
-	private String cause;
-	private long timeStamp;
-	
+	int code;
+	UserWrapper user;
 }

@@ -1,15 +1,14 @@
 package org.edupoll.repository;
 
-import java.util.List;
+import java.util.Optional;
 
 import org.edupoll.model.entity.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface UserRepository extends JpaRepository<User, Long> {
+public interface UserRepository extends JpaRepository<User, Long>{
 
-	List<User> findByEmail(String email);
-//	public User findByEmail(String email);
-//  public Optional<User> findByEmail(String email);
+	public boolean existsByEmail(String email);
+	public Optional<User> findByEmail(String email);
 }
 
 

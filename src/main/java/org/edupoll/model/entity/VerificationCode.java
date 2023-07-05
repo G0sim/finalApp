@@ -1,13 +1,14 @@
 package org.edupoll.model.entity;
 
-import java.sql.Date;
+
+import java.util.Date;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.PrePersist;
 import jakarta.persistence.Table;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -15,7 +16,7 @@ import lombok.Setter;
 @Setter
 @Getter
 @Table(name="validCodes")
-public class ValidCode {
+public class VerificationCode {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -27,11 +28,4 @@ public class ValidCode {
 	private Date created; // 발급된 날짜
 	private String state; // 통과여부
 	
-	
-//	@PrePersist
-//	public void perPersist() {
-//		created= new Date();
-//	}
-	
-
 }

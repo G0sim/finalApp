@@ -1,8 +1,9 @@
 package org.edupoll.model.dto.response;
 
 import java.text.SimpleDateFormat;
+import java.util.Date;
 
-import org.edupoll.model.entity.ValidCode;
+import org.edupoll.model.entity.VerificationCode;
 
 import lombok.Data;
 
@@ -15,7 +16,7 @@ public class CertifyResponse {
 	String created;
 	String state;
 	
-	public CertifyResponse(ValidCode v) {
+	public CertifyResponse(VerificationCode v) {
 		super();
 		SimpleDateFormat fm = new SimpleDateFormat("yyyy-MM-dd");
 		this.created = fm.format(v.getCreated());

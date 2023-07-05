@@ -5,10 +5,8 @@ import lombok.Data;
 
 @Data
 @AllArgsConstructor
-public class ErrorResponse {
+public class OAuthSignResponse {
 
-	private int code;
-	private String cause;
-	private long timeStamp;
-	
+	private int code;;
+	private String uri;
 }

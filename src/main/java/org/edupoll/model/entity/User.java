@@ -6,6 +6,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import jakarta.validation.Valid;
+import jakarta.validation.constraints.Pattern;
 
 @Entity
 @Table(name = "users")
@@ -14,7 +15,7 @@ public class User {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	Long id;
-	@Valid
+	@Pattern(regexp = "[a-zA-Z0-9]+@[a-zA-Z]+[.]+[a-zA-Z]+")
 	String email;
 	String password;
 	String name;
